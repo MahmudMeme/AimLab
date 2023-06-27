@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace AimLab
 {
-    public partial class Form1 : Form
+    public partial class GameplayForm : Form
     {
-        Sceen sceen = new Sceen();
+        Scene Scene = new Scene();
         Random random = new Random();
         public int Weith { get; set; }
         public int Heght { get; set; }
         public int TotalPoints { get; set; } = 0;
-        public Form1()
+        public GameplayForm()
         {
             InitializeComponent();
             Width = this.Width;
@@ -33,18 +33,18 @@ namespace AimLab
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
 
-            TotalPoints += sceen.HitSometing(e.Location);
+            TotalPoints += Scene.HitSometing(e.Location);
             lbTotalPoints.Text = $"Total points = {TotalPoints}  ";
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            sceen.Draw(e.Graphics);
+            Scene.Draw(e.Graphics);
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            sceen.AddTarget(RandomLocation());
+            Scene.AddTarget(RandomLocation());
             Invalidate();
         }
         private Point RandomLocation()

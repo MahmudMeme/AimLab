@@ -9,3 +9,14 @@ C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.csproj.GenerateR
 C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.csproj.CoreCompileInputs.cache
 C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.exe
 C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.pdb
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\bin\Debug\AimLab.exe.config
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\bin\Debug\AimLab.exe
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\bin\Debug\AimLab.pdb
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.csproj.AssemblyReference.cache
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.csproj.SuggestedBindingRedirects.cache
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.GameplayForm.resources
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.Properties.Resources.resources
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.csproj.GenerateResource.cache
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.csproj.CoreCompileInputs.cache
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.exe
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.pdb
