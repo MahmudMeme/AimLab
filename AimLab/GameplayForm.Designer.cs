@@ -42,9 +42,10 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(3, 3);
+            this.btnStart.Location = new System.Drawing.Point(3, 4);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(78, 30);
+            this.btnStart.Size = new System.Drawing.Size(88, 38);
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "Start";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -53,33 +54,35 @@
             // lbTotalPoints
             // 
             this.lbTotalPoints.AutoSize = true;
-            this.lbTotalPoints.Location = new System.Drawing.Point(179, 9);
+            this.lbTotalPoints.Location = new System.Drawing.Point(201, 11);
             this.lbTotalPoints.Name = "lbTotalPoints";
-            this.lbTotalPoints.Size = new System.Drawing.Size(44, 16);
+            this.lbTotalPoints.Size = new System.Drawing.Size(51, 20);
             this.lbTotalPoints.TabIndex = 1;
             this.lbTotalPoints.Text = "label1";
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(87, 3);
+            this.btnStop.Location = new System.Drawing.Point(98, 4);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 30);
+            this.btnStop.Size = new System.Drawing.Size(84, 38);
             this.btnStop.TabIndex = 2;
             this.btnStop.Text = "Stop";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Visible = false;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
-            // Form1
+            // GameplayForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1417, 669);
+            this.ClientSize = new System.Drawing.Size(1594, 836);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.lbTotalPoints);
             this.Controls.Add(this.btnStart);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.Name = "GameplayForm";
+            this.Text = "Aim Game";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);

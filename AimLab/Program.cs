@@ -16,7 +16,7 @@ namespace AimLab
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new GameplayForm());
+            Application.Run(new HomeScreenForm());
         }
     }
 }
