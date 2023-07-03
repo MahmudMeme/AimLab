@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,15 +15,17 @@ namespace AimLab
     {
         Scene Scene = new Scene();
         Random random = new Random();
+        public Account account { get; set; }
         public int Weith { get; set; }
         public int Heght { get; set; }
         public int TotalPoints { get; set; } = 0;
-        public GameplayForm()
+        public GameplayForm(Account _account)
         {
             InitializeComponent();
             Width = this.Width;
             Height = this.Height;
             DoubleBuffered = true;
+            account = _account;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -68,6 +71,11 @@ namespace AimLab
             timer1.Stop();
             btnStart.Visible = true;
             btnStop.Visible = false;
+        }
+
+        private void GameplayForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Process.GetCurrentProcess().Kill();
         }
     }
 }

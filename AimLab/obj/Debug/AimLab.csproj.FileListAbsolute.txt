@@ -21,3 +21,5 @@ D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proek
 D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.exe
 D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.pdb
 D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.HomeScreenForm.resources
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.InputDialogForm.resources
+D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.LeaderboardForm.resources
