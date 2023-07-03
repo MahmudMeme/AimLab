@@ -33,6 +33,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.lbTotalPoints = new System.Windows.Forms.Label();
             this.btnStop = new System.Windows.Forms.Button();
+            this.infoLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // timer1
@@ -72,11 +73,21 @@
             this.btnStop.Visible = false;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
+            // infoLabel
+            // 
+            this.infoLabel.AutoSize = true;
+            this.infoLabel.Location = new System.Drawing.Point(12, 807);
+            this.infoLabel.Name = "infoLabel";
+            this.infoLabel.Size = new System.Drawing.Size(51, 20);
+            this.infoLabel.TabIndex = 3;
+            this.infoLabel.Text = "label1";
+            // 
             // GameplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1594, 836);
+            this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.btnStop);
             this.Controls.Add(this.lbTotalPoints);
             this.Controls.Add(this.btnStart);
@@ -98,6 +109,7 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Label lbTotalPoints;
         private System.Windows.Forms.Button btnStop;
+        private System.Windows.Forms.Label infoLabel;
     }
 }
 

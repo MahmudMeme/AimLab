@@ -26,6 +26,7 @@ namespace AimLab
             Height = this.Height;
             DoubleBuffered = true;
             account = _account;
+            infoLabel.Text = $"Hello {account.Name}. Current level is {account.Level}";
         }
 
         private void Form1_Load(object sender, EventArgs e)

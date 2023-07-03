@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,6 +59,47 @@ namespace AimLab
 
         private void btnLoadGame_Click(object sender, EventArgs e)
         {
+            string FileName = string.Empty;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Account file (*.acct)|*.acct";
+            openFileDialog.Title = "Open a Account File";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    FileName = openFileDialog.FileName;
+                    System.Runtime.Serialization.IFormatter fmt = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    System.IO.FileStream strm = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None);
+                    Account acc = (Account)fmt.Deserialize(strm);
+                    strm.Close();
+                    if (acc != null)
+                    {
+                        acc.SavedPath = FileName;
+                        FileName = $"{Environment.CurrentDirectory}//leaderboard.ldr";
+                        System.Runtime.Serialization.IFormatter format = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                        System.IO.FileStream stream = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None);
+                        Leaderboard leaderboard = (Leaderboard)format.Deserialize(stream);
+                        stream.Close();
+                        if(leaderboard.Accounts.Where(s => s.Name == acc.Name && s.Level == acc.Level).Any())
+                        {
+                            GameplayForm gameplayForm = new GameplayForm(acc);
+                            gameplayForm.Location = this.Location;
+                            gameplayForm.StartPosition = FormStartPosition.Manual;
+                            gameplayForm.Show();
+                            this.Hide();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"The file is not created from this game or is not the latest.");
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error: Could not read file \"" + FileName + "\" from disk. Original error: " + ex.Message);
+                    FileName = null;
+                }
+            }
 
         }
 
@@ -82,27 +124,50 @@ namespace AimLab
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            Leaderboard leaderboard = new Leaderboard();
-            leaderboard.LastUpdated = DateTime.Now;
-            var aaa = new Account("alo");
-            leaderboard.Accounts.Add(aaa);
-            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
-            saveFileDialog1.Filter = "Leaderboard file (*.ldr)|*.ldr";
-            saveFileDialog1.Title = "Save a SimpleDraw File";
-            string name = "";
-            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
-            {
-                name = saveFileDialog1.FileName;
-                System.Runtime.Serialization.IFormatter fmt = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
-                System.IO.FileStream strm = new FileStream(name, FileMode.Create, FileAccess.Write, FileShare.None);
-                fmt.Serialize(strm, leaderboard);
-                strm.Close();
-            }
+            //Leaderboard leaderboard = new Leaderboard();
+            //leaderboard.LastUpdated = DateTime.Now;
+            //var aaa = new Account("alo");
+            //leaderboard.Accounts.Add(aaa);
+            //SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            //saveFileDialog1.Filter = "Leaderboard file (*.ldr)|*.ldr";
+            //saveFileDialog1.Title = "Save a SimpleDraw File";
+            //string name = "";
+            //if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            //{
+            //    name = saveFileDialog1.FileName;
+            //    System.Runtime.Serialization.IFormatter fmt = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            //    System.IO.FileStream strm = new FileStream(name, FileMode.Create, FileAccess.Write, FileShare.None);
+            //    fmt.Serialize(strm, leaderboard);
+            //    strm.Close();
+            //}
         }
 
         private void HomeScreenForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Process.GetCurrentProcess().Kill();
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            //string FileName = $"{Environment.CurrentDirectory}//leaderboard.ldr";
+            //System.Runtime.Serialization.IFormatter fmt = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            //System.IO.FileStream strm = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None);
+            //Leaderboard leaderboard = (Leaderboard)fmt.Deserialize(strm);
+            //strm.Close();
+            //Account nov = new Account("Pance");
+            //nov.Level = 100;
+            //leaderboard.Accounts.Add(nov);
+            //leaderboard.LastUpdated = DateTime.Now;
+            //FileName = $"{Environment.CurrentDirectory}//leaderboard.ldr";
+            //System.Runtime.Serialization.IFormatter form = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            //System.IO.FileStream streammm = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+            //form.Serialize(streammm, leaderboard);
+            //streammm.Close();
+            //FileName = $"{Environment.CurrentDirectory}//testing.acct";
+            //System.Runtime.Serialization.IFormatter acform = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            //System.IO.FileStream acstreammm = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+            //acform.Serialize(acstreammm, nov);
+            //acstreammm.Close();
         }
     }
 }

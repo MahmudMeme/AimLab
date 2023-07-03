@@ -52,8 +52,8 @@ namespace AimLab
             leaderboard.Accounts = leaderboard.Accounts.OrderBy(d => d.Level).ToList();
             for (int no = 1; no <= 10; no++)
             {
-                int a = leaderboard.Accounts.FindIndex(d => d.Level == no);
-                if (a != -1)
+                int a = leaderboard.Accounts.Count();
+                if (no <= a)
                 {
                     no--;
                     switch (no)
