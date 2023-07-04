@@ -3,7 +3,6 @@ C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\bin\Debug\AimLab.exe
 C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\bin\Debug\AimLab.pdb
 C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.csproj.AssemblyReference.cache
 C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.csproj.SuggestedBindingRedirects.cache
-C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.Form1.resources
 C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.Properties.Resources.resources
 C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.csproj.GenerateResource.cache
 C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.csproj.CoreCompileInputs.cache
@@ -23,3 +22,7 @@ D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proek
 D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.HomeScreenForm.resources
 D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.InputDialogForm.resources
 D:\ФИНКИ\Семестар 4\Визуелно Програмирање\Proekt\AimLab\AimLab\obj\Debug\AimLab.LeaderboardForm.resources
+C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.GameplayForm.resources
+C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.HomeScreenForm.resources
+C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.InputDialogForm.resources
+C:\Users\Mahmu\Desktop\vpProekna\AimLab\AimLab\obj\Debug\AimLab.LeaderboardForm.resources
