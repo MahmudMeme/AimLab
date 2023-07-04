@@ -36,7 +36,6 @@ namespace AimLab
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
-
             TotalPoints += Scene.HitSometing(e.Location);
             lbTotalPoints.Text = $"Total points = {TotalPoints}  ";
         }

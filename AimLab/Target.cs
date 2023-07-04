@@ -40,22 +40,24 @@ namespace AimLab
         }
         public void Draw(Graphics g)
         {
-            Brush brush = new SolidBrush(Color.Yellow);
+            Brush brush = new SolidBrush(Color.Cyan);
+            Pen pen = new Pen(Color.DarkCyan);
             //Head
             g.FillEllipse(brush, HeadCenter.X - RadiusHead, HeadCenter.Y - RadiusHead, RadiusHead * 2, RadiusHead * 2);
+            g.DrawEllipse(pen, HeadCenter.X - RadiusHead, HeadCenter.Y - RadiusHead, RadiusHead * 2, RadiusHead * 2);
             //Body
-            brush = new SolidBrush(Color.Blue);
+            brush = new SolidBrush(Color.DarkCyan);
             g.FillRectangle(brush, BodyCenter.X, BodyCenter.Y, BodyWidth, BodyHeight);
             //arms
-            brush = new SolidBrush(Color.Green);
+            brush = new SolidBrush(Color.DarkTurquoise);
             g.FillRectangle(brush, ArmLeft.X, ArmLeft.Y, ArmWidth, ArmHeight);
             g.FillRectangle(brush, ArmRight.X, ArmRight.Y, ArmWidth, ArmHeight);
             //legs
-            brush = new SolidBrush(Color.Red);
+            brush = new SolidBrush(Color.DarkTurquoise);
             g.FillRectangle(brush, LegLeft.X, LegLeft.Y, LegWidth, LegHeght);
             g.FillRectangle(brush, LegRight.X, LegRight.Y, LegWidth, LegHeght);
 
-
+            pen.Dispose();
             brush.Dispose();
         }
         public static int MaxWidth()
