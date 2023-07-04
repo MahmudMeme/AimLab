@@ -86,6 +86,7 @@ namespace AimLab
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            SetIntervalTimer1();
             timer1.Start();
             stopMenu.Visible = true;
             startMenu.Visible = false;
@@ -165,17 +166,17 @@ namespace AimLab
             {
                 timer1.Interval = ticks - ((level - 1) * 50);
             }
-            else if (level > 11 && level < 50)
+            else if (level >= 11 && level < 51)
             {
                 ticks = 500;
                 timer1.Interval = ticks - ((level - 11) * 5);
             }
-            else if (level > 51 && level < 100)
+            else if (level >= 51 && level < 101)
             {
                 ticks = 200;
                 timer1.Interval = ticks - ((level - 51) * 2);
             }
-            else if (level > 101 && level < 200)
+            else if (level >= 101 && level < 200)
             {
                 ticks = 100;
                 timer1.Interval = ticks - (level - 101);
