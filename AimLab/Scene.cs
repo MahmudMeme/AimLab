@@ -14,14 +14,12 @@ namespace AimLab
         public static int ArmOrLegHit { get; set; } = 2;
         public static int Miss { get; set; } = -10;
         public Target target { get; set; }
-
-        public static Color ColorCrosshair { get; set; } = Color.Black;
-        public static bool CircleCrosshair { get; set; } = false;
+        public static Account account{ get; set; }
         public static Point Pointer { get; set; }
-        public static int Thickness { get; set; } = 2;
 
-        public Scene()
+        public Scene(Account _account)
         {
+            account = _account;
             target = new Target()
             {
 

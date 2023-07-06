@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection.Emit;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,9 +16,8 @@ namespace AimLab
 {
     public partial class GameplayForm : Form
     {
-        Scene Scene = new Scene();
         Random random = new Random();
-        public Account account { get; set; }
+        public Scene Scene { get; set; }
         public int Weith { get; set; }
         public int Heght { get; set; }
         public int TotalPoints { get; set; } = 0;
@@ -29,9 +29,9 @@ namespace AimLab
             Width = this.Width;
             Height = this.Height;
             DoubleBuffered = true;
-            account = _account;
-            infoLabel.Text = $"Hello {account.Name}. Current level is {account.Level}";
             normalToolStripMenuItem.Checked = true;
+            Scene = new Scene(_account);
+            infoLabel.Text = $"Hello {Scene.account.Name}. Current level is {Scene.account.Level}";
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -60,7 +60,7 @@ namespace AimLab
                 }
             }
             lbTotalPoints.Text = $"Total points = {TotalPoints}  ";
-            infoLabel.Text = $"Hello {account.Name}. Current level is {account.Level}";
+            infoLabel.Text = $"Hello {Scene.account.Name}. Current level is {Scene.account.Level}";
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -123,7 +123,7 @@ namespace AimLab
         public void LevelUP()
         {
             TotalPoints = 0;
-            account.Level = account.Level + 1;
+            Scene.account.Level = Scene.account.Level + 1;
             SetIntervalTimer1();
             Timer2Ticks = 0;
             stopMenu.Visible = false;
@@ -133,9 +133,9 @@ namespace AimLab
         public void LevelDown()
         {
             TotalPoints = 0;
-            if (account.Level > 1)
+            if (Scene.account.Level > 1)
             {
-                account.Level = account.Level - 1;
+                Scene.account.Level = Scene.account.Level - 1;
             }
             SetIntervalTimer1();
             Timer2Ticks = 0;
@@ -162,7 +162,7 @@ namespace AimLab
         public void SetIntervalTimer1()
         {
             int ticks = 1000;
-            int level = account.Level;
+            int level = Scene.account.Level;
             if (level > 1 && level < 11)
             {
                 timer1.Interval = ticks - ((level - 1) * 50);
@@ -211,6 +211,7 @@ namespace AimLab
             }
             else
             {
+                Invalidate();
                 Cursor.Show();
             }
         }
@@ -220,20 +221,20 @@ namespace AimLab
             ColorDialog dlg = new ColorDialog();
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                Scene.ColorCrosshair = dlg.Color;
+                Scene.account.CrossHairColor = dlg.Color;
             }
         }
 
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Scene.CircleCrosshair = !Scene.CircleCrosshair;
+            Scene.account.CrossHairHaveCircle = !Scene.account.CrossHairHaveCircle;
             /*circleToolStripMenuItem.Checked = !Scene.CircleCrosshair;*/
         }
 
         private void thinnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             thinnToolStripMenuItem.Checked = true;
-            Scene.Thickness = 1;
+            Scene.account.CrossHairThickness= 1;
             normalToolStripMenuItem.Checked = false;
             thickToolStripMenuItem.Checked = false;
         }
@@ -241,7 +242,7 @@ namespace AimLab
         private void normalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             normalToolStripMenuItem.Checked = true;
-            Scene.Thickness = 2;
+            Scene.account.CrossHairThickness= 2;
             thickToolStripMenuItem.Checked = false;
             thinnToolStripMenuItem.Checked = false;
         }
@@ -249,7 +250,7 @@ namespace AimLab
         private void thickToolStripMenuItem_Click(object sender, EventArgs e)
         {
             thickToolStripMenuItem.Checked = true;
-            Scene.Thickness = 3;
+            Scene.account.CrossHairThickness = 3;
             thinnToolStripMenuItem.Checked = false;
             normalToolStripMenuItem.Checked = false;
         }
