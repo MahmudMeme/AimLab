@@ -14,16 +14,22 @@ namespace AimLab
         public static int ArmOrLegHit { get; set; } = 2;
         public static int Miss { get; set; } = -10;
         public Target target { get; set; }
+
+        public static Color ColorCrosshair { get; set; } = Color.Black;
+        public static bool CircleCrosshair { get; set; } = false;
+        public static Point Pointer { get; set; }
+        public static int Thickness { get; set; } = 2;
+
         public Scene()
         {
             target = new Target()
             {
-                 
+
             };
         }
         public void Draw(Graphics g)
         {
-            if(target.HeadCenter.X != 0)
+            if (target.HeadCenter.X != 0)
             {
                 target.Draw(g);
             }
@@ -50,5 +56,12 @@ namespace AimLab
                 return ArmOrLegHit;
             else return Miss;
         }
+
+        internal void DrawLines()
+        {
+            target.Crosshair = Pointer;
+
+        }
+       
     }
 }

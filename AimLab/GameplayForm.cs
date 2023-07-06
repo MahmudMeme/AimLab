@@ -31,6 +31,7 @@ namespace AimLab
             DoubleBuffered = true;
             account = _account;
             infoLabel.Text = $"Hello {account.Name}. Current level is {account.Level}";
+            normalToolStripMenuItem.Checked = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -140,7 +141,7 @@ namespace AimLab
             Timer2Ticks = 0;
             stopMenu.Visible = false;
             startMenu.Visible = true;
-            Gameing=false;
+            Gameing = false;
 
         }
         private void ResetLevel()
@@ -191,6 +192,72 @@ namespace AimLab
             Timer2Ticks++;
             int left = 60 - Timer2Ticks;
             TimerLeft.Text = $"Time Left: {left}";
+        }
+
+        private void GameplayForm_MouseMove(object sender, MouseEventArgs e)
+        {
+
+            Scene.Pointer = e.Location;
+            if (Gameing)
+            {
+                Scene.DrawLines();
+                Invalidate();
+                /* if (InFrame(e.Location))
+                     Cursor.Hide();
+                 else
+                     Cursor.Show();*/
+
+                Cursor.Hide();
+            }
+            else
+            {
+                Cursor.Show();
+            }
+        }
+
+        private void colorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog dlg = new ColorDialog();
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                Scene.ColorCrosshair = dlg.Color;
+            }
+        }
+
+        private void circleToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Scene.CircleCrosshair = !Scene.CircleCrosshair;
+            /*circleToolStripMenuItem.Checked = !Scene.CircleCrosshair;*/
+        }
+
+        private void thinnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            thinnToolStripMenuItem.Checked = true;
+            Scene.Thickness = 1;
+            normalToolStripMenuItem.Checked = false;
+            thickToolStripMenuItem.Checked = false;
+        }
+
+        private void normalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            normalToolStripMenuItem.Checked = true;
+            Scene.Thickness = 2;
+            thickToolStripMenuItem.Checked = false;
+            thinnToolStripMenuItem.Checked = false;
+        }
+
+        private void thickToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            thickToolStripMenuItem.Checked = true;
+            Scene.Thickness = 3;
+            thinnToolStripMenuItem.Checked = false;
+            normalToolStripMenuItem.Checked = false;
+        }
+        private bool InFrame(Point point)
+        {
+            if (point.X > 0 && point.X < Target.MaxWidth() && point.Y > 10 && point.Y < Target.MaxHeght())
+                return true;
+            else return false;
         }
     }
 }

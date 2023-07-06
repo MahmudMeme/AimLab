@@ -24,6 +24,10 @@ namespace AimLab
         public Point LegLeft { get; set; }
         public Point LegRight { get; set; }
 
+
+        public Point Crosshair { get; set; }
+        public static int CrosshairRadius { get; set; } = 7;
+
         public Target()
         {
         }
@@ -57,8 +61,33 @@ namespace AimLab
             g.FillRectangle(brush, LegLeft.X, LegLeft.Y, LegWidth, LegHeght);
             g.FillRectangle(brush, LegRight.X, LegRight.Y, LegWidth, LegHeght);
 
+            //crosshair
+            // pen = new Pen(ColorCrosshair);
+/*            pen = new Pen(Scene.ColorCrosshair);
+            g.DrawLine(pen, Crosshair, new Point(Crosshair.X, Crosshair.Y + CrosshairRadius));
+            g.DrawLine(pen, Crosshair, new Point(Crosshair.X - CrosshairRadius, Crosshair.Y));
+            g.DrawLine(pen, Crosshair, new Point(Crosshair.X + CrosshairRadius, Crosshair.Y));
+            g.DrawLine(pen, Crosshair, new Point(Crosshair.X, Crosshair.Y - CrosshairRadius));*/
+
+            //crosshair
+            // pen = new Pen(ColorCrosshair);
+            pen = new Pen(Scene.ColorCrosshair,Scene.Thickness);
+            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X, Scene.Pointer.Y + CrosshairRadius));
+            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y));
+            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X + CrosshairRadius, Scene.Pointer.Y));
+            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X, Scene.Pointer.Y - CrosshairRadius));
+
+            if (Scene.CircleCrosshair)
+            {
+                g.DrawEllipse(pen, Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y - CrosshairRadius, CrosshairRadius * 2, CrosshairRadius * 2);
+            }
+
             pen.Dispose();
             brush.Dispose();
+
+
+
+
         }
         public static int MaxWidth()
         {
