@@ -60,6 +60,10 @@ namespace AimLab
             target.Crosshair = Pointer;
 
         }
+        public void EmtyScene()
+        {
+            target=new Target();
+        }
        
     }
 }

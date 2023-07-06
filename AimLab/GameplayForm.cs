@@ -23,6 +23,9 @@ namespace AimLab
         public int TotalPoints { get; set; } = 0;
         public int Timer2Ticks { get; set; } = 0;
         public bool Gameing { get; set; } = false;
+        public static int LEVELUPPOINTS { get; set; } = 50;
+        public static int LEVELDOWNPOINTS { get; set; } = -100;
+
         public GameplayForm(Account _account)
         {
             InitializeComponent();
@@ -44,19 +47,21 @@ namespace AimLab
             if (Gameing)
             {
                 TotalPoints += Scene.HitSometing(e.Location);
-                if (TotalPoints >= 50)
+                if (TotalPoints >= LEVELUPPOINTS)
                 {
                     timer1.Stop();
                     Gameing = false;
                     LevelUP();
                     levelLength.Stop();
+                    ShowButtons();
                 }
-                if (TotalPoints <= -100)
+                if (TotalPoints <= LEVELDOWNPOINTS)
                 {
                     timer1.Stop();
                     Gameing = false;
                     LevelDown();
                     levelLength.Stop();
+                    ShowButtons();
                 }
             }
             lbTotalPoints.Text = $"Total points = {TotalPoints}  ";
@@ -87,23 +92,10 @@ namespace AimLab
 
         private void startToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetIntervalTimer1();
-            timer1.Start();
-            stopMenu.Visible = true;
-            startMenu.Visible = false;
-            levelLength.Start();
-            Gameing = true;
+            ShowButtons();
 
         }
 
-        private void stopMenu_Click(object sender, EventArgs e)
-        {
-            timer1.Stop();
-            stopMenu.Visible = false;
-            startMenu.Visible = true;
-            levelLength.Stop();
-            Gameing = false;
-        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             Scene.AddTarget(RandomLocation());
@@ -126,9 +118,11 @@ namespace AimLab
             Scene.account.Level = Scene.account.Level + 1;
             SetIntervalTimer1();
             Timer2Ticks = 0;
-            stopMenu.Visible = false;
+            // stopMenu.Visible = false;
             startMenu.Visible = true;
             Gameing = false;
+            Scene.EmtyScene();
+            TimerLeft.Text = "Successfully";
         }
         public void LevelDown()
         {
@@ -139,10 +133,12 @@ namespace AimLab
             }
             SetIntervalTimer1();
             Timer2Ticks = 0;
-            stopMenu.Visible = false;
+
             startMenu.Visible = true;
             Gameing = false;
+            Scene.EmtyScene();
 
+            TimerLeft.Text = "Failed";
         }
         private void ResetLevel()
         {
@@ -151,9 +147,13 @@ namespace AimLab
             TotalPoints = 0;
             lbTotalPoints.Text = $"Total points = {TotalPoints}  ";
             Timer2Ticks = 0;
-            stopMenu.Visible = false;
+
             startMenu.Visible = true;
             Gameing = false;
+            Scene.EmtyScene();
+            ShowButtons();
+
+            TimerLeft.Text = "Try Again";
         }
         public void MaxLevel()
         {
@@ -202,17 +202,12 @@ namespace AimLab
             {
                 Scene.DrawLines();
                 Invalidate();
-                /* if (InFrame(e.Location))
-                     Cursor.Hide();
-                 else
-                     Cursor.Show();*/
-
-                Cursor.Hide();
+                //Cursor.Hide();
             }
             else
             {
                 Invalidate();
-                Cursor.Show();
+                // Cursor.Show();
             }
         }
 
@@ -228,13 +223,12 @@ namespace AimLab
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Scene.account.CrossHairHaveCircle = !Scene.account.CrossHairHaveCircle;
-            /*circleToolStripMenuItem.Checked = !Scene.CircleCrosshair;*/
         }
 
         private void thinnToolStripMenuItem_Click(object sender, EventArgs e)
         {
             thinnToolStripMenuItem.Checked = true;
-            Scene.account.CrossHairThickness= 1;
+            Scene.account.CrossHairThickness = 1;
             normalToolStripMenuItem.Checked = false;
             thickToolStripMenuItem.Checked = false;
         }
@@ -242,7 +236,7 @@ namespace AimLab
         private void normalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             normalToolStripMenuItem.Checked = true;
-            Scene.account.CrossHairThickness= 2;
+            Scene.account.CrossHairThickness = 2;
             thickToolStripMenuItem.Checked = false;
             thinnToolStripMenuItem.Checked = false;
         }
@@ -254,11 +248,40 @@ namespace AimLab
             thinnToolStripMenuItem.Checked = false;
             normalToolStripMenuItem.Checked = false;
         }
-        private bool InFrame(Point point)
+
+        private void btnContinue_Click(object sender, EventArgs e)
         {
-            if (point.X > 0 && point.X < Target.MaxWidth() && point.Y > 10 && point.Y < Target.MaxHeght())
-                return true;
-            else return false;
+            SetIntervalTimer1();
+            timer1.Start();
+            startMenu.Visible = false;
+            levelLength.Start();
+            Gameing = true;
+            HideButtons();
+        }
+
+        private void btnLoadGaame_Click(object sender, EventArgs e)
+        {
+            //todo 
+        }
+
+        private void btnSavaGame_Click(object sender, EventArgs e)
+        {
+            //TODO 
+        }
+        private void ShowButtons()
+        {
+            if (Scene.account.Level > 1)
+            {
+                btnLoadGaame.Visible = true;
+                btnSavaGame.Visible = true;
+            }
+            btnContinue.Visible = true;
+        }
+        private void HideButtons()
+        {
+            btnContinue.Visible = false;
+            btnLoadGaame.Visible = false;
+            btnSavaGame.Visible = false;
         }
     }
 }

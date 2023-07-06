@@ -34,15 +34,17 @@
             this.infoLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.startMenu = new System.Windows.Forms.ToolStripMenuItem();
-            this.stopMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.circleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.levelLength = new System.Windows.Forms.Timer(this.components);
-            this.TimerLeft = new System.Windows.Forms.Label();
             this.thicknessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thinnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.levelLength = new System.Windows.Forms.Timer(this.components);
+            this.TimerLeft = new System.Windows.Forms.Label();
+            this.btnContinue = new System.Windows.Forms.Button();
+            this.btnLoadGaame = new System.Windows.Forms.Button();
+            this.btnSavaGame = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -74,7 +76,6 @@
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.startMenu,
-            this.stopMenu,
             this.colorToolStripMenuItem,
             this.circleToolStripMenuItem,
             this.thicknessToolStripMenuItem});
@@ -87,17 +88,9 @@
             // startMenu
             // 
             this.startMenu.Name = "startMenu";
-            this.startMenu.Size = new System.Drawing.Size(54, 24);
-            this.startMenu.Text = "Start";
+            this.startMenu.Size = new System.Drawing.Size(60, 24);
+            this.startMenu.Text = "Menu";
             this.startMenu.Click += new System.EventHandler(this.startToolStripMenuItem_Click);
-            // 
-            // stopMenu
-            // 
-            this.stopMenu.Name = "stopMenu";
-            this.stopMenu.Size = new System.Drawing.Size(54, 24);
-            this.stopMenu.Text = "Stop";
-            this.stopMenu.Visible = false;
-            this.stopMenu.Click += new System.EventHandler(this.stopMenu_Click);
             // 
             // colorToolStripMenuItem
             // 
@@ -113,6 +106,37 @@
             this.circleToolStripMenuItem.Text = "Circle";
             this.circleToolStripMenuItem.Click += new System.EventHandler(this.circleToolStripMenuItem_Click);
             // 
+            // thicknessToolStripMenuItem
+            // 
+            this.thicknessToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.thinnToolStripMenuItem,
+            this.normalToolStripMenuItem,
+            this.thickToolStripMenuItem});
+            this.thicknessToolStripMenuItem.Name = "thicknessToolStripMenuItem";
+            this.thicknessToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
+            this.thicknessToolStripMenuItem.Text = "Thickness";
+            // 
+            // thinnToolStripMenuItem
+            // 
+            this.thinnToolStripMenuItem.Name = "thinnToolStripMenuItem";
+            this.thinnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.thinnToolStripMenuItem.Text = "Thin";
+            this.thinnToolStripMenuItem.Click += new System.EventHandler(this.thinnToolStripMenuItem_Click);
+            // 
+            // normalToolStripMenuItem
+            // 
+            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
+            this.normalToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.normalToolStripMenuItem.Text = "Normal";
+            this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
+            // 
+            // thickToolStripMenuItem
+            // 
+            this.thickToolStripMenuItem.Name = "thickToolStripMenuItem";
+            this.thickToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.thickToolStripMenuItem.Text = "Thick";
+            this.thickToolStripMenuItem.Click += new System.EventHandler(this.thickToolStripMenuItem_Click);
+            // 
             // levelLength
             // 
             this.levelLength.Interval = 1000;
@@ -127,42 +151,44 @@
             this.TimerLeft.TabIndex = 5;
             this.TimerLeft.Text = "TIME LEFT: 60";
             // 
-            // thicknessToolStripMenuItem
+            // btnContinue
             // 
-            this.thicknessToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.thinnToolStripMenuItem,
-            this.normalToolStripMenuItem,
-            this.thickToolStripMenuItem});
-            this.thicknessToolStripMenuItem.Name = "thicknessToolStripMenuItem";
-            this.thicknessToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
-            this.thicknessToolStripMenuItem.Text = "thickness";
+            this.btnContinue.Location = new System.Drawing.Point(560, 146);
+            this.btnContinue.Name = "btnContinue";
+            this.btnContinue.Size = new System.Drawing.Size(183, 70);
+            this.btnContinue.TabIndex = 6;
+            this.btnContinue.Text = "Play";
+            this.btnContinue.UseVisualStyleBackColor = true;
+            this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
             // 
-            // thinnToolStripMenuItem
+            // btnLoadGaame
             // 
-            this.thinnToolStripMenuItem.Name = "thinnToolStripMenuItem";
-            this.thinnToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.thinnToolStripMenuItem.Text = "thinn";
-            this.thinnToolStripMenuItem.Click += new System.EventHandler(this.thinnToolStripMenuItem_Click);
+            this.btnLoadGaame.Location = new System.Drawing.Point(560, 237);
+            this.btnLoadGaame.Name = "btnLoadGaame";
+            this.btnLoadGaame.Size = new System.Drawing.Size(183, 65);
+            this.btnLoadGaame.TabIndex = 7;
+            this.btnLoadGaame.Text = "Load Game";
+            this.btnLoadGaame.UseVisualStyleBackColor = true;
+            this.btnLoadGaame.Click += new System.EventHandler(this.btnLoadGaame_Click);
             // 
-            // normalToolStripMenuItem
+            // btnSavaGame
             // 
-            this.normalToolStripMenuItem.Name = "normalToolStripMenuItem";
-            this.normalToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.normalToolStripMenuItem.Text = "normal";
-            this.normalToolStripMenuItem.Click += new System.EventHandler(this.normalToolStripMenuItem_Click);
-            // 
-            // thickToolStripMenuItem
-            // 
-            this.thickToolStripMenuItem.Name = "thickToolStripMenuItem";
-            this.thickToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.thickToolStripMenuItem.Text = "thick";
-            this.thickToolStripMenuItem.Click += new System.EventHandler(this.thickToolStripMenuItem_Click);
+            this.btnSavaGame.Location = new System.Drawing.Point(560, 320);
+            this.btnSavaGame.Name = "btnSavaGame";
+            this.btnSavaGame.Size = new System.Drawing.Size(183, 68);
+            this.btnSavaGame.TabIndex = 8;
+            this.btnSavaGame.Text = "Save Game";
+            this.btnSavaGame.UseVisualStyleBackColor = true;
+            this.btnSavaGame.Click += new System.EventHandler(this.btnSavaGame_Click);
             // 
             // GameplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1417, 669);
+            this.Controls.Add(this.btnSavaGame);
+            this.Controls.Add(this.btnLoadGaame);
+            this.Controls.Add(this.btnContinue);
             this.Controls.Add(this.TimerLeft);
             this.Controls.Add(this.infoLabel);
             this.Controls.Add(this.lbTotalPoints);
@@ -189,7 +215,6 @@
         private System.Windows.Forms.Label infoLabel;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem startMenu;
-        private System.Windows.Forms.ToolStripMenuItem stopMenu;
         private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem;
         private System.Windows.Forms.Timer levelLength;
         private System.Windows.Forms.Label TimerLeft;
@@ -198,6 +223,9 @@
         private System.Windows.Forms.ToolStripMenuItem thinnToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem normalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem thickToolStripMenuItem;
+        private System.Windows.Forms.Button btnContinue;
+        private System.Windows.Forms.Button btnLoadGaame;
+        private System.Windows.Forms.Button btnSavaGame;
     }
 }
 

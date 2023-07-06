@@ -63,15 +63,15 @@ namespace AimLab
 
             //crosshair
             // pen = new Pen(ColorCrosshair);
-/*            pen = new Pen(Scene.ColorCrosshair);
-            g.DrawLine(pen, Crosshair, new Point(Crosshair.X, Crosshair.Y + CrosshairRadius));
-            g.DrawLine(pen, Crosshair, new Point(Crosshair.X - CrosshairRadius, Crosshair.Y));
-            g.DrawLine(pen, Crosshair, new Point(Crosshair.X + CrosshairRadius, Crosshair.Y));
-            g.DrawLine(pen, Crosshair, new Point(Crosshair.X, Crosshair.Y - CrosshairRadius));*/
+            /*            pen = new Pen(Scene.ColorCrosshair);
+                        g.DrawLine(pen, Crosshair, new Point(Crosshair.X, Crosshair.Y + CrosshairRadius));
+                        g.DrawLine(pen, Crosshair, new Point(Crosshair.X - CrosshairRadius, Crosshair.Y));
+                        g.DrawLine(pen, Crosshair, new Point(Crosshair.X + CrosshairRadius, Crosshair.Y));
+                        g.DrawLine(pen, Crosshair, new Point(Crosshair.X, Crosshair.Y - CrosshairRadius));*/
 
             //crosshair
             // pen = new Pen(ColorCrosshair);
-            pen = new Pen(Scene.account.CrossHairColor,Scene.account.CrossHairThickness);
+            pen = new Pen(Scene.account.CrossHairColor, Scene.account.CrossHairThickness);
             g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X, Scene.Pointer.Y + CrosshairRadius));
             g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y));
             g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X + CrosshairRadius, Scene.Pointer.Y));
@@ -101,7 +101,7 @@ namespace AimLab
         public bool HitHead(Point cursur)
         {
             int distance = (int)Math.Sqrt(Math.Pow(HeadCenter.X - cursur.X, 2) + Math.Pow(HeadCenter.Y - cursur.Y, 2));
-            return distance < RadiusHead;
+            return distance <= RadiusHead;
         }
         public bool HitBody(Point cursur)
         {
@@ -143,7 +143,6 @@ namespace AimLab
             }
             return false;
         }
-
     }
 
 }
