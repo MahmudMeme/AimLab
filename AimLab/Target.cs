@@ -95,7 +95,7 @@ namespace AimLab
             if (Scene.account.CrossHairHaveCircle)
             {
                 g.DrawEllipse(pen, Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y - CrosshairRadius, CrosshairRadius * 2, CrosshairRadius * 2);
-            }
+            }   
         }
         public static int MaxWidth()
         {

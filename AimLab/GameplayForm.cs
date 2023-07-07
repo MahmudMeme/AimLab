@@ -191,7 +191,14 @@ namespace AimLab
         }
         public void MaxLevel()
         {
+            if (MessageBox.Show("level 200", " Dali sakate do go zacuvate vasiot rezultat", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
 
+            }
+            else
+            {
+
+            }
         }
         public void SetIntervalTimer1()
         {
