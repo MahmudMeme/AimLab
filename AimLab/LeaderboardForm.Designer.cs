@@ -146,6 +146,7 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.no9Label);
             this.panel1.Controls.Add(this.no10Label);
@@ -164,6 +165,7 @@
             // 
             // Leaderboard
             // 
+            this.Leaderboard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Leaderboard.AutoSize = true;
             this.Leaderboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 40F);
             this.Leaderboard.Location = new System.Drawing.Point(563, 93);
@@ -175,6 +177,7 @@
             // 
             // homeButton
             // 
+            this.homeButton.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.homeButton.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.homeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.homeButton.Location = new System.Drawing.Point(757, 698);

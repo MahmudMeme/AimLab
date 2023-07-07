@@ -49,7 +49,7 @@ namespace AimLab
                 strm.Close();
 
             }
-            leaderboard.Accounts = leaderboard.Accounts.OrderBy(d => d.Level).ToList();
+            leaderboard.Accounts = leaderboard.Accounts.OrderByDescending(d => d.Level).ToList();
             for (int no = 1; no <= 10; no++)
             {
                 int a = leaderboard.Accounts.Count();
@@ -62,31 +62,31 @@ namespace AimLab
                             no1Label.Text = $"1. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
                             break;
                         case 1:
-                            no2Label.Text = $"1. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
+                            no2Label.Text = $"2. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
                             break;
                         case 2:
-                            no3Label.Text = $"1. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
+                            no3Label.Text = $"3. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
                             break;
                         case 3:
-                            no4Label.Text = $"1. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
+                            no4Label.Text = $"4. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
                             break;
                         case 4:
-                            no5Label.Text = $"1. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
+                            no5Label.Text = $"5. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
                             break;
                         case 5:
-                            no6Label.Text = $"1. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
+                            no6Label.Text = $"6. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
                             break;
                         case 6:
-                            no7Label.Text = $"1. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
+                            no7Label.Text = $"7. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
                             break;
                         case 7:
-                            no8Label.Text = $"1. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
+                            no8Label.Text = $"8. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
                             break;
                         case 8:
-                            no9Label.Text = $"1. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
+                            no9Label.Text = $"9. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
                             break;
                         case 9:
-                            no10Label.Text = $"1. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
+                            no10Label.Text = $"10. {leaderboard.Accounts[no].Name} - Level {leaderboard.Accounts[no].Level}";
                             break;
                     }
                     no++;

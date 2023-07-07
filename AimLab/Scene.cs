@@ -31,6 +31,10 @@ namespace AimLab
             {
                 target.Draw(g);
             }
+            else
+            {
+                target.DrawCrossHair(g);
+            }
         }
         public void AddTarget(Point point)
         {
@@ -58,11 +62,10 @@ namespace AimLab
         internal void DrawLines()
         {
             target.Crosshair = Pointer;
-
         }
         public void EmtyScene()
         {
-            target=new Target();
+            target = new Target();
         }
        
     }

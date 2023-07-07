@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Reflection.Emit;
 using System.Security.Principal;
@@ -35,6 +36,15 @@ namespace AimLab
             normalToolStripMenuItem.Checked = true;
             Scene = new Scene(_account);
             infoLabel.Text = $"Hello {Scene.account.Name}. Current level is {Scene.account.Level}";
+            if (Scene.account.CrossHairHaveCircle)
+                circleToolStripMenuItem.Text = "Circle ON";
+            else
+                circleToolStripMenuItem.Text = "Circle OFF";
+            if (!string.IsNullOrEmpty(_account.SavedPath))
+            {
+                btnSaveGame.Text = "Auto Saved";
+                btnSaveGame.Enabled = false;
+            }
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -62,6 +72,34 @@ namespace AimLab
                     LevelDown();
                     levelLength.Stop();
                     ShowButtons();
+                }
+                if (!string.IsNullOrEmpty(Scene.account.SavedPath))
+                {
+                    string FileName = $"{Environment.CurrentDirectory}//leaderboard.ldr";
+                    System.Runtime.Serialization.IFormatter fmt = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    System.IO.FileStream strm = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None);
+                    Leaderboard leaderboard = (Leaderboard)fmt.Deserialize(strm);
+                    strm.Close();
+                    leaderboard.Accounts.Remove(leaderboard.Accounts.Where(s => s.Name == Scene.account.Name).FirstOrDefault());
+                    leaderboard.Accounts.Add(Scene.account);
+                    leaderboard.LastUpdated = DateTime.Now;
+                    FileName = $"{Environment.CurrentDirectory}//leaderboard.ldr";
+                    System.Runtime.Serialization.IFormatter form = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    System.IO.FileStream streammm = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                    form.Serialize(streammm, leaderboard);
+                    streammm.Close();
+                    FileName = Scene.account.SavedPath;
+                    System.Runtime.Serialization.IFormatter acform = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                    System.IO.FileStream acstreammm = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                    acform.Serialize(acstreammm, Scene.account);
+                    acstreammm.Close();
+                    btnSaveGame.Text = "Auto Saved";
+                    btnSaveGame.Enabled = false;
+                }
+                else
+                {
+                    btnSaveGame.Text = "Save Game";
+                    btnSaveGame.Enabled = true;
                 }
             }
             lbTotalPoints.Text = $"Total points = {TotalPoints}  ";
@@ -118,8 +156,6 @@ namespace AimLab
             Scene.account.Level = Scene.account.Level + 1;
             SetIntervalTimer1();
             Timer2Ticks = 0;
-            // stopMenu.Visible = false;
-            startMenu.Visible = true;
             Gameing = false;
             Scene.EmtyScene();
             TimerLeft.Text = "Successfully";
@@ -134,7 +170,6 @@ namespace AimLab
             SetIntervalTimer1();
             Timer2Ticks = 0;
 
-            startMenu.Visible = true;
             Gameing = false;
             Scene.EmtyScene();
 
@@ -148,7 +183,6 @@ namespace AimLab
             lbTotalPoints.Text = $"Total points = {TotalPoints}  ";
             Timer2Ticks = 0;
 
-            startMenu.Visible = true;
             Gameing = false;
             Scene.EmtyScene();
             ShowButtons();
@@ -223,6 +257,10 @@ namespace AimLab
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Scene.account.CrossHairHaveCircle = !Scene.account.CrossHairHaveCircle;
+            if (Scene.account.CrossHairHaveCircle)
+                circleToolStripMenuItem.Text = "Circle ON";
+            else
+                circleToolStripMenuItem.Text = "Circle OFF";
         }
 
         private void thinnToolStripMenuItem_Click(object sender, EventArgs e)
@@ -253,7 +291,6 @@ namespace AimLab
         {
             SetIntervalTimer1();
             timer1.Start();
-            startMenu.Visible = false;
             levelLength.Start();
             Gameing = true;
             HideButtons();
@@ -270,18 +307,80 @@ namespace AimLab
         }
         private void ShowButtons()
         {
-            if (Scene.account.Level > 1)
-            {
-                btnLoadGaame.Visible = true;
-                btnSavaGame.Visible = true;
-            }
-            btnContinue.Visible = true;
+            btnSaveGame.Visible = true;
+            btnHome.Visible = true;
+            btnPlay.Visible = true;
         }
         private void HideButtons()
         {
-            btnContinue.Visible = false;
-            btnLoadGaame.Visible = false;
-            btnSavaGame.Visible = false;
+            btnPlay.Visible = false;
+            btnSaveGame.Visible = false;
+            btnHome.Visible = false;
         }
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(Scene.account.SavedPath))
+            {
+                string FileName = Scene.account.SavedPath;
+                System.Runtime.Serialization.IFormatter acform = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                System.IO.FileStream acstreammm = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                acform.Serialize(acstreammm, Scene.account);
+                acstreammm.Close();
+            }
+
+            SetIntervalTimer1();
+            timer1.Start();
+            levelLength.Start();
+            Gameing = true;
+            HideButtons();
+        }
+
+        private void btnHome_Click(object sender, EventArgs e)
+        {
+            var home = new HomeScreenForm();
+            home.Location = this.Location;
+            home.StartPosition = FormStartPosition.Manual;
+            home.Show();
+            this.Hide();
+        }
+
+        private void btnSaveGame_Click(object sender, EventArgs e)
+        {
+            string FileName = string.Empty;
+            SaveFileDialog saveFileDialog1 = new SaveFileDialog();
+            saveFileDialog1.Filter = "Account file (*.acct)|*.acct";
+            saveFileDialog1.Title = "Save a Account File";
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                FileName = saveFileDialog1.FileName;
+                System.Runtime.Serialization.IFormatter format = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                System.IO.FileStream stream = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                Scene.account.SavedPath = FileName;
+                format.Serialize(stream, Scene.account);
+                stream.Close();
+
+                #region Leaderboard saving
+
+                FileName = $"{Environment.CurrentDirectory}//leaderboard.ldr";
+                System.Runtime.Serialization.IFormatter fmt = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                System.IO.FileStream strm = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None);
+                Leaderboard leaderboard = (Leaderboard)fmt.Deserialize(strm);
+                strm.Close();
+                leaderboard.Accounts.Remove(leaderboard.Accounts.Where(s => s.Name == Scene.account.Name).FirstOrDefault());
+                leaderboard.Accounts.Add(Scene.account);
+                leaderboard.LastUpdated = DateTime.Now;
+                FileName = $"{Environment.CurrentDirectory}//leaderboard.ldr";
+                System.Runtime.Serialization.IFormatter form = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+                System.IO.FileStream streammm = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+                form.Serialize(streammm, leaderboard);
+                streammm.Close();
+
+                #endregion
+
+                btnSaveGame.Text = "Auto Saved";
+                btnSaveGame.Enabled = false;
+            }
+        }
+
     }
 }

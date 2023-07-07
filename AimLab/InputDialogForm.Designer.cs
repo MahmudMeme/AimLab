@@ -39,10 +39,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(15, 54);
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.textBox1.Location = new System.Drawing.Point(17, 68);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(432, 22);
+            this.textBox1.Size = new System.Drawing.Size(486, 26);
             this.textBox1.TabIndex = 0;
             // 
             // contextMenuStrip1
@@ -53,9 +54,10 @@
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(12, 7);
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label1.Location = new System.Drawing.Point(14, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(436, 45);
+            this.label1.Size = new System.Drawing.Size(490, 56);
             this.label1.TabIndex = 2;
             this.label1.Text = "Please enter your name, if you previously have used your name just try some nickn" +
     "ame or load your previous game.";
@@ -63,11 +65,12 @@
             // 
             // clearTextButton
             // 
+            this.clearTextButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.clearTextButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.clearTextButton.Location = new System.Drawing.Point(339, 95);
+            this.clearTextButton.Location = new System.Drawing.Point(381, 119);
             this.clearTextButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.clearTextButton.Name = "clearTextButton";
-            this.clearTextButton.Size = new System.Drawing.Size(108, 28);
+            this.clearTextButton.Size = new System.Drawing.Size(122, 35);
             this.clearTextButton.TabIndex = 3;
             this.clearTextButton.Text = "Clear text";
             this.clearTextButton.UseVisualStyleBackColor = true;
@@ -75,10 +78,11 @@
             // 
             // confirmButton
             // 
-            this.confirmButton.Location = new System.Drawing.Point(225, 95);
+            this.confirmButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.confirmButton.Location = new System.Drawing.Point(253, 119);
             this.confirmButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.confirmButton.Name = "confirmButton";
-            this.confirmButton.Size = new System.Drawing.Size(108, 28);
+            this.confirmButton.Size = new System.Drawing.Size(122, 35);
             this.confirmButton.TabIndex = 4;
             this.confirmButton.Text = "Use name";
             this.confirmButton.UseVisualStyleBackColor = true;
@@ -87,18 +91,18 @@
             // errorLabel
             // 
             this.errorLabel.AutoSize = true;
-            this.errorLabel.Location = new System.Drawing.Point(12, 101);
+            this.errorLabel.Location = new System.Drawing.Point(14, 126);
             this.errorLabel.Name = "errorLabel";
-            this.errorLabel.Size = new System.Drawing.Size(0, 16);
+            this.errorLabel.Size = new System.Drawing.Size(0, 20);
             this.errorLabel.TabIndex = 5;
             // 
             // InputDialogForm
             // 
             this.AcceptButton = this.confirmButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.clearTextButton;
-            this.ClientSize = new System.Drawing.Size(459, 207);
+            this.ClientSize = new System.Drawing.Size(516, 259);
             this.Controls.Add(this.errorLabel);
             this.Controls.Add(this.confirmButton);
             this.Controls.Add(this.clearTextButton);

@@ -39,6 +39,7 @@
             // 
             // btnNewGame
             // 
+            this.btnNewGame.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnNewGame.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnNewGame.FlatAppearance.BorderSize = 2;
             this.btnNewGame.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -52,6 +53,7 @@
             // 
             // btnLeaderBoard
             // 
+            this.btnLeaderBoard.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLeaderBoard.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnLeaderBoard.FlatAppearance.BorderSize = 2;
             this.btnLeaderBoard.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -65,6 +67,7 @@
             // 
             // btnLoadGame
             // 
+            this.btnLoadGame.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnLoadGame.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnLoadGame.FlatAppearance.BorderSize = 2;
             this.btnLoadGame.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -78,6 +81,7 @@
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox2.BackgroundImage = global::AimLab.Properties.Resources._150;
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox2.Location = new System.Drawing.Point(664, 65);
@@ -89,6 +93,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.BackgroundImage = global::AimLab.Properties.Resources.shutDown40;
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBox1.Location = new System.Drawing.Point(777, 697);

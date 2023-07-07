@@ -84,10 +84,18 @@ namespace AimLab
 
             pen.Dispose();
             brush.Dispose();
-
-
-
-
+        }
+        public void DrawCrossHair(Graphics g)
+        {
+            Pen pen = new Pen(Scene.account.CrossHairColor, Scene.account.CrossHairThickness);
+            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X, Scene.Pointer.Y + CrosshairRadius));
+            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y));
+            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X + CrosshairRadius, Scene.Pointer.Y));
+            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X, Scene.Pointer.Y - CrosshairRadius));
+            if (Scene.account.CrossHairHaveCircle)
+            {
+                g.DrawEllipse(pen, Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y - CrosshairRadius, CrosshairRadius * 2, CrosshairRadius * 2);
+            }
         }
         public static int MaxWidth()
         {

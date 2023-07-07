@@ -71,6 +71,7 @@ namespace AimLab
                     System.Runtime.Serialization.IFormatter fmt = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
                     System.IO.FileStream strm = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None);
                     Account acc = (Account)fmt.Deserialize(strm);
+                    acc.SavedPath = FileName;
                     strm.Close();
                     if (acc != null)
                     {
@@ -168,6 +169,30 @@ namespace AimLab
             //System.IO.FileStream acstreammm = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
             //acform.Serialize(acstreammm, nov);
             //acstreammm.Close();
+        }
+
+        private void button1_Click_3(object sender, EventArgs e)
+        {
+            string FileName = $"{Environment.CurrentDirectory}//leaderboard.ldr";
+            System.Runtime.Serialization.IFormatter fmt = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            System.IO.FileStream strm = new FileStream(FileName, FileMode.Open, FileAccess.Read, FileShare.None);
+            Leaderboard leaderboard = (Leaderboard)fmt.Deserialize(strm);
+            strm.Close();
+            Account nov = new Account("Pance");
+            nov.Level = 100;
+            leaderboard.Accounts.Add(nov);
+            leaderboard.LastUpdated = DateTime.Now;
+            FileName = $"{Environment.CurrentDirectory}//leaderboard.ldr";
+            System.Runtime.Serialization.IFormatter form = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            System.IO.FileStream streammm = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+            form.Serialize(streammm, leaderboard);
+            streammm.Close();
+            FileName = $"{Environment.CurrentDirectory}//testing.acct";
+            System.Runtime.Serialization.IFormatter acform = new System.Runtime.Serialization.Formatters.Binary.BinaryFormatter();
+            System.IO.FileStream acstreammm = new FileStream(FileName, FileMode.Create, FileAccess.Write, FileShare.None);
+            acform.Serialize(acstreammm, nov);
+            acstreammm.Close();
+
         }
     }
 }
