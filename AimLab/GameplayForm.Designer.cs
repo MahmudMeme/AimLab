@@ -34,17 +34,20 @@
             this.infoLabel = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.circleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thicknessToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thinnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.normalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.thickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.circleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.levelLength = new System.Windows.Forms.Timer(this.components);
             this.TimerLeft = new System.Windows.Forms.Label();
             this.btnPlay = new System.Windows.Forms.Button();
             this.btnSaveGame = new System.Windows.Forms.Button();
             this.btnHome = new System.Windows.Forms.Button();
+            this.imageGoldAim = new System.Windows.Forms.PictureBox();
+            this.lblWinner = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageGoldAim)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -56,7 +59,7 @@
             // 
             this.lbTotalPoints.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbTotalPoints.AutoSize = true;
-            this.lbTotalPoints.Location = new System.Drawing.Point(12, 776);
+            this.lbTotalPoints.Location = new System.Drawing.Point(12, 774);
             this.lbTotalPoints.Name = "lbTotalPoints";
             this.lbTotalPoints.Size = new System.Drawing.Size(105, 20);
             this.lbTotalPoints.TabIndex = 1;
@@ -67,7 +70,7 @@
             // 
             this.infoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.infoLabel.AutoSize = true;
-            this.infoLabel.Location = new System.Drawing.Point(12, 808);
+            this.infoLabel.Location = new System.Drawing.Point(12, 806);
             this.infoLabel.Name = "infoLabel";
             this.infoLabel.Size = new System.Drawing.Size(47, 20);
             this.infoLabel.TabIndex = 3;
@@ -84,7 +87,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1594, 36);
+            this.menuStrip1.Size = new System.Drawing.Size(1616, 33);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -94,13 +97,6 @@
             this.colorToolStripMenuItem.Size = new System.Drawing.Size(71, 29);
             this.colorToolStripMenuItem.Text = "Color";
             this.colorToolStripMenuItem.Click += new System.EventHandler(this.colorToolStripMenuItem_Click);
-            // 
-            // circleToolStripMenuItem
-            // 
-            this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
-            this.circleToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
-            this.circleToolStripMenuItem.Text = "Circle ON";
-            this.circleToolStripMenuItem.Click += new System.EventHandler(this.circleToolStripMenuItem_Click);
             // 
             // thicknessToolStripMenuItem
             // 
@@ -133,6 +129,13 @@
             this.thickToolStripMenuItem.Text = "Thick";
             this.thickToolStripMenuItem.Click += new System.EventHandler(this.thickToolStripMenuItem_Click);
             // 
+            // circleToolStripMenuItem
+            // 
+            this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
+            this.circleToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
+            this.circleToolStripMenuItem.Text = "Circle ON";
+            this.circleToolStripMenuItem.Click += new System.EventHandler(this.circleToolStripMenuItem_Click);
+            // 
             // levelLength
             // 
             this.levelLength.Interval = 1000;
@@ -153,7 +156,7 @@
             this.btnPlay.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnPlay.FlatAppearance.BorderSize = 2;
             this.btnPlay.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnPlay.Location = new System.Drawing.Point(622, 252);
+            this.btnPlay.Location = new System.Drawing.Point(633, 272);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(348, 107);
             this.btnPlay.TabIndex = 9;
@@ -167,7 +170,7 @@
             this.btnSaveGame.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSaveGame.FlatAppearance.BorderSize = 2;
             this.btnSaveGame.Font = new System.Drawing.Font("Trebuchet MS", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.btnSaveGame.Location = new System.Drawing.Point(623, 365);
+            this.btnSaveGame.Location = new System.Drawing.Point(634, 385);
             this.btnSaveGame.Name = "btnSaveGame";
             this.btnSaveGame.Size = new System.Drawing.Size(348, 107);
             this.btnSaveGame.TabIndex = 10;
@@ -181,7 +184,7 @@
             this.btnHome.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnHome.FlatAppearance.BorderSize = 2;
             this.btnHome.Font = new System.Drawing.Font("Trebuchet MS", 16F, System.Drawing.FontStyle.Bold);
-            this.btnHome.Location = new System.Drawing.Point(686, 478);
+            this.btnHome.Location = new System.Drawing.Point(697, 498);
             this.btnHome.Name = "btnHome";
             this.btnHome.Size = new System.Drawing.Size(222, 81);
             this.btnHome.TabIndex = 11;
@@ -189,11 +192,39 @@
             this.btnHome.UseVisualStyleBackColor = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
             // 
+            // imageGoldAim
+            // 
+            this.imageGoldAim.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.imageGoldAim.BackgroundImage = global::AimLab.Properties.Resources._3b7340_27018874151;
+            this.imageGoldAim.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.imageGoldAim.Location = new System.Drawing.Point(643, 54);
+            this.imageGoldAim.Name = "imageGoldAim";
+            this.imageGoldAim.Size = new System.Drawing.Size(330, 330);
+            this.imageGoldAim.TabIndex = 14;
+            this.imageGoldAim.TabStop = false;
+            this.imageGoldAim.Click += new System.EventHandler(this.pictureBox3_Click);
+            // 
+            // lblWinner
+            // 
+            this.lblWinner.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblWinner.Font = new System.Drawing.Font("Trebuchet MS", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblWinner.ForeColor = System.Drawing.Color.Goldenrod;
+            this.lblWinner.Location = new System.Drawing.Point(63, 601);
+            this.lblWinner.Name = "lblWinner";
+            this.lblWinner.Size = new System.Drawing.Size(1490, 110);
+            this.lblWinner.TabIndex = 15;
+            this.lblWinner.Text = "Congratulations @user you\'ve reached the last level of this game.\r\nThe golden aim" +
+    " is yours, same as the first place in the leaderboard\r\n";
+            this.lblWinner.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblWinner.Click += new System.EventHandler(this.lblWinner_Click);
+            // 
             // GameplayForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1594, 836);
+            this.ClientSize = new System.Drawing.Size(1616, 836);
+            this.Controls.Add(this.lblWinner);
+            this.Controls.Add(this.imageGoldAim);
             this.Controls.Add(this.btnHome);
             this.Controls.Add(this.btnSaveGame);
             this.Controls.Add(this.btnPlay);
@@ -212,6 +243,7 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.GameplayForm_MouseMove);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imageGoldAim)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -234,6 +266,8 @@
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Button btnSaveGame;
         private System.Windows.Forms.Button btnHome;
+        private System.Windows.Forms.PictureBox imageGoldAim;
+        private System.Windows.Forms.Label lblWinner;
     }
 }
 

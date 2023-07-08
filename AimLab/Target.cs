@@ -44,46 +44,67 @@ namespace AimLab
         }
         public void Draw(Graphics g)
         {
-            Brush brush = new SolidBrush(Color.Cyan);
-            Pen pen = new Pen(Color.DarkCyan);
-            //Head
-            g.FillEllipse(brush, HeadCenter.X - RadiusHead, HeadCenter.Y - RadiusHead, RadiusHead * 2, RadiusHead * 2);
-            g.DrawEllipse(pen, HeadCenter.X - RadiusHead, HeadCenter.Y - RadiusHead, RadiusHead * 2, RadiusHead * 2);
-            //Body
-            brush = new SolidBrush(Color.DarkCyan);
-            g.FillRectangle(brush, BodyCenter.X, BodyCenter.Y, BodyWidth, BodyHeight);
-            //arms
-            brush = new SolidBrush(Color.DarkTurquoise);
-            g.FillRectangle(brush, ArmLeft.X, ArmLeft.Y, ArmWidth, ArmHeight);
-            g.FillRectangle(brush, ArmRight.X, ArmRight.Y, ArmWidth, ArmHeight);
-            //legs
-            brush = new SolidBrush(Color.DarkTurquoise);
-            g.FillRectangle(brush, LegLeft.X, LegLeft.Y, LegWidth, LegHeght);
-            g.FillRectangle(brush, LegRight.X, LegRight.Y, LegWidth, LegHeght);
-
-            //crosshair
-            // pen = new Pen(ColorCrosshair);
-            /*            pen = new Pen(Scene.ColorCrosshair);
-                        g.DrawLine(pen, Crosshair, new Point(Crosshair.X, Crosshair.Y + CrosshairRadius));
-                        g.DrawLine(pen, Crosshair, new Point(Crosshair.X - CrosshairRadius, Crosshair.Y));
-                        g.DrawLine(pen, Crosshair, new Point(Crosshair.X + CrosshairRadius, Crosshair.Y));
-                        g.DrawLine(pen, Crosshair, new Point(Crosshair.X, Crosshair.Y - CrosshairRadius));*/
-
-            //crosshair
-            // pen = new Pen(ColorCrosshair);
-            pen = new Pen(Scene.account.CrossHairColor, Scene.account.CrossHairThickness);
-            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X, Scene.Pointer.Y + CrosshairRadius));
-            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y));
-            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X + CrosshairRadius, Scene.Pointer.Y));
-            g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X, Scene.Pointer.Y - CrosshairRadius));
-
-            if (Scene.account.CrossHairHaveCircle)
+            if (Scene.account.Level < 200)
             {
-                g.DrawEllipse(pen, Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y - CrosshairRadius, CrosshairRadius * 2, CrosshairRadius * 2);
-            }
+                Brush brush = new SolidBrush(Color.Cyan);
+                Pen pen = new Pen(Color.DarkCyan);
+                //Head
+                g.FillEllipse(brush, HeadCenter.X - RadiusHead, HeadCenter.Y - RadiusHead, RadiusHead * 2, RadiusHead * 2);
+                g.DrawEllipse(pen, HeadCenter.X - RadiusHead, HeadCenter.Y - RadiusHead, RadiusHead * 2, RadiusHead * 2);
+                //Body
+                brush = new SolidBrush(Color.DarkCyan);
+                g.FillRectangle(brush, BodyCenter.X, BodyCenter.Y, BodyWidth, BodyHeight);
+                //arms
+                brush = new SolidBrush(Color.DarkTurquoise);
+                g.FillRectangle(brush, ArmLeft.X, ArmLeft.Y, ArmWidth, ArmHeight);
+                g.FillRectangle(brush, ArmRight.X, ArmRight.Y, ArmWidth, ArmHeight);
+                //legs
+                brush = new SolidBrush(Color.DarkTurquoise);
+                g.FillRectangle(brush, LegLeft.X, LegLeft.Y, LegWidth, LegHeght);
+                g.FillRectangle(brush, LegRight.X, LegRight.Y, LegWidth, LegHeght);
 
-            pen.Dispose();
-            brush.Dispose();
+                //crosshair
+                // pen = new Pen(ColorCrosshair);
+                /*            pen = new Pen(Scene.ColorCrosshair);
+                            g.DrawLine(pen, Crosshair, new Point(Crosshair.X, Crosshair.Y + CrosshairRadius));
+                            g.DrawLine(pen, Crosshair, new Point(Crosshair.X - CrosshairRadius, Crosshair.Y));
+                            g.DrawLine(pen, Crosshair, new Point(Crosshair.X + CrosshairRadius, Crosshair.Y));
+                            g.DrawLine(pen, Crosshair, new Point(Crosshair.X, Crosshair.Y - CrosshairRadius));*/
+
+                //crosshair
+                // pen = new Pen(ColorCrosshair);
+                pen = new Pen(Scene.account.CrossHairColor, Scene.account.CrossHairThickness);
+                g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X, Scene.Pointer.Y + CrosshairRadius));
+                g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y));
+                g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X + CrosshairRadius, Scene.Pointer.Y));
+                g.DrawLine(pen, Scene.Pointer, new Point(Scene.Pointer.X, Scene.Pointer.Y - CrosshairRadius));
+
+                if (Scene.account.CrossHairHaveCircle)
+                {
+                    g.DrawEllipse(pen, Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y - CrosshairRadius, CrosshairRadius * 2, CrosshairRadius * 2);
+                }
+
+                pen.Dispose();
+                brush.Dispose();
+            }
+            else
+            {
+                Brush brush = new SolidBrush(Color.Cyan);
+                Pen pen = new Pen(Color.DarkCyan);
+                pen = new Pen(Scene.account.CrossHairColor, Scene.account.CrossHairThickness);
+                g.DrawLine(pen, HeadCenter, new Point(HeadCenter.X, HeadCenter.Y + CrosshairRadius));
+                g.DrawLine(pen, HeadCenter, new Point(HeadCenter.X - CrosshairRadius, HeadCenter.Y));
+                g.DrawLine(pen, HeadCenter, new Point(HeadCenter.X + CrosshairRadius, HeadCenter.Y));
+                g.DrawLine(pen, HeadCenter, new Point(HeadCenter.X, HeadCenter.Y - CrosshairRadius));
+
+                if (Scene.account.CrossHairHaveCircle)
+                {
+                    g.DrawEllipse(pen, HeadCenter.X - CrosshairRadius, HeadCenter.Y - CrosshairRadius, CrosshairRadius * 2, CrosshairRadius * 2);
+                }
+
+                pen.Dispose();
+                brush.Dispose();
+            }
         }
         public void DrawCrossHair(Graphics g)
         {
@@ -95,7 +116,7 @@ namespace AimLab
             if (Scene.account.CrossHairHaveCircle)
             {
                 g.DrawEllipse(pen, Scene.Pointer.X - CrosshairRadius, Scene.Pointer.Y - CrosshairRadius, CrosshairRadius * 2, CrosshairRadius * 2);
-            }   
+            }
         }
         public static int MaxWidth()
         {

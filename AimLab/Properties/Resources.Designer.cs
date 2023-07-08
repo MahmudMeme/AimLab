@@ -73,6 +73,26 @@ namespace AimLab.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _3b7340_2701887415 {
+            get {
+                object obj = ResourceManager.GetObject("3b7340-2701887415", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _3b7340_27018874151 {
+            get {
+                object obj = ResourceManager.GetObject("3b7340-27018874151", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap shutDown40 {
             get {
                 object obj = ResourceManager.GetObject("shutDown40", resourceCulture);

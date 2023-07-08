@@ -35,6 +35,8 @@ namespace AimLab
             DoubleBuffered = true;
             normalToolStripMenuItem.Checked = true;
             Scene = new Scene(_account);
+            lblWinner.Hide();
+            imageGoldAim.Hide();
             infoLabel.Text = $"Hello {Scene.account.Name}. Current level is {Scene.account.Level}";
             if (Scene.account.CrossHairHaveCircle)
                 circleToolStripMenuItem.Text = "Circle ON";
@@ -44,6 +46,11 @@ namespace AimLab
             {
                 btnSaveGame.Text = "Auto Saved";
                 btnSaveGame.Enabled = false;
+            }
+            if(Scene.account.Level >= 200)
+            {
+                HideButtons();
+                MaxLevel();
             }
         }
 
@@ -63,7 +70,13 @@ namespace AimLab
                     Gameing = false;
                     LevelUP();
                     levelLength.Stop();
-                    ShowButtons();
+                    if (Scene.account.Level < 200)
+                        ShowButtons();
+                    else
+                    {
+                        btnHome.Show();
+                        MaxLevel();
+                    }
                 }
                 if (TotalPoints <= LEVELDOWNPOINTS)
                 {
@@ -191,14 +204,16 @@ namespace AimLab
         }
         public void MaxLevel()
         {
-            if (MessageBox.Show("level 200", " Dali sakate do go zacuvate vasiot rezultat", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-
-            }
-            else
-            {
-
-            }
+            HideButtons();
+            lblWinner.Text = $"Congratulations {Scene.account.Name} you've reached the last level of this game.\r\nThe golden aim is yours, same as the first place in the leaderboard.\r\n";
+            lblWinner.Show();
+            imageGoldAim.Show();
+            btnHome.Show();
+            btnSaveGame.Show();
+            SetIntervalTimer1();
+            lbTotalPoints.Hide();
+            TimerLeft.Text = "Don't look here, you don't need this anymore!";
+            timer1.Start();
         }
         public void SetIntervalTimer1()
         {
@@ -223,10 +238,6 @@ namespace AimLab
                 ticks = 100;
                 timer1.Interval = ticks - (level - 101);
             }
-            else
-            {
-                MaxLevel();
-            }
         }
         private void levelLength_Tick(object sender, EventArgs e)
         {
@@ -237,18 +248,20 @@ namespace AimLab
 
         private void GameplayForm_MouseMove(object sender, MouseEventArgs e)
         {
-
-            Scene.Pointer = e.Location;
-            if (Gameing)
+            if(Scene.account.Level < 200)
             {
-                Scene.DrawLines();
-                Invalidate();
-                //Cursor.Hide();
-            }
-            else
-            {
-                Invalidate();
-                // Cursor.Show();
+                Scene.Pointer = e.Location;
+                if (Gameing)
+                {
+                    Scene.DrawLines();
+                    Invalidate();
+                    //Cursor.Hide();
+                }
+                else
+                {
+                    Invalidate();
+                    // Cursor.Show();
+                }
             }
         }
 
@@ -389,5 +402,14 @@ namespace AimLab
             }
         }
 
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblWinner_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
